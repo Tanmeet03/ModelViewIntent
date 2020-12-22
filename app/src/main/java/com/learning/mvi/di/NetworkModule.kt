@@ -2,7 +2,15 @@ package com.learning.mvi.di
 
 import com.google.gson.Gson
 import com.google.gson.GsonBuilder
-import com.learning.mvi.network.FactApi
+import com.learning.mvi.business.data.network.NetworkDataSource
+import com.learning.mvi.business.data.network.NetworkDataSourceImpl
+import com.learning.mvi.business.domain.model.FactModel
+import com.learning.mvi.business.domain.util.EntityMapper
+import com.learning.mvi.framework.datasource.network.FactRetrofitService
+import com.learning.mvi.framework.datasource.network.FactRetrofitServiceImpl
+import com.learning.mvi.framework.datasource.network.api.FactApi
+import com.learning.mvi.framework.datasource.network.mapper.NetworkMapper
+import com.learning.mvi.framework.datasource.network.model.FactNetworkEntity
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -48,6 +56,29 @@ object NetworkModule {
 	@Provides
 	fun provideFactService(retrofit : Retrofit.Builder) : FactApi {
 		return retrofit.build().create(FactApi::class.java)
+	}
+
+	@Singleton
+	@Provides
+	fun provideNetworkMapper(): EntityMapper<FactNetworkEntity, FactModel> {
+		return NetworkMapper()
+	}
+
+	@Singleton
+	@Provides
+	fun provideNetworkDataSource(
+		factRetrofitService: FactRetrofitService,
+		networkMapper: NetworkMapper
+	): NetworkDataSource {
+		return NetworkDataSourceImpl(factRetrofitService, networkMapper)
+	}
+
+	@Singleton
+	@Provides
+	fun provideRetrofitService(
+		factRetrofit: FactApi
+	): FactRetrofitService{
+		return FactRetrofitServiceImpl(factRetrofit)
 	}
 
 }

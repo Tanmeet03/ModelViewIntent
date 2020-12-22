@@ -1,7 +1,7 @@
 package com.learning.mvi.di
 
 import androidx.fragment.app.FragmentFactory
-import com.learning.mvi.ui.fragment.MainFragmentFactory
+import com.learning.mvi.framework.presentation.fragment.MainFragmentFactory
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
