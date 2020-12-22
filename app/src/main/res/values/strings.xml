@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Model-View-Intent</string>
+    <string name="year_title">Select Year</string>
+</resources>
