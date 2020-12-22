@@ -1,6 +1,15 @@
 
 Special thanks to  [codingwithmitch.com](https://codingwithmitch.com/)
 
+## Number Fact application
+Get to know some amazing facts about
+
+1. Date
+2. Year
+3. Number
+4. Random facts
+5. Trivia
+
 # Model View Intent
 MVI stands for Model-View-Intent. MVI is one of the newest architecture patterns for Android, inspired by the unidirectional and cyclical nature of the Cycle.js framework.
 
