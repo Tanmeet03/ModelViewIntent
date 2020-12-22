@@ -34,7 +34,7 @@ Below is a list of examples.
 2. Field injecting a class with no dependencies. You own that class.
 3. Scopes and the "tier-like" system
 4. Dependencies that require dependencies (Concrete classes that you own)
-5. Some things can't be constructor-injected. What is the solution?
+5. Some things can't be constructor-injected.
 6. Hilt Modules, Binds and Provides
 7. Multiple Bindings of the same type
 
