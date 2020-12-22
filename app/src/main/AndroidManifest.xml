@@ -12,14 +12,18 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".framework.presentation.MainActivity">
+        <activity
+            android:name=".framework.presentation.MainActivity"
+            android:screenOrientation="portrait">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".framework.presentation.FactActivity" />
+        <activity
+            android:name=".framework.presentation.FactActivity"
+            android:screenOrientation="portrait" />
     </application>
 
 </manifest>
