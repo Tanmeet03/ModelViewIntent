@@ -4,6 +4,7 @@ import android.content.Context
 import androidx.room.Room
 import com.learning.mvi.business.data.cache.CacheDataSource
 import com.learning.mvi.business.data.cache.CacheDataSourceImpl
+import com.learning.mvi.business.domain.model.DbData
 import com.learning.mvi.business.domain.model.FactModel
 import com.learning.mvi.business.domain.util.EntityMapper
 import com.learning.mvi.framework.datasource.cache.FactDaoService
@@ -12,6 +13,7 @@ import com.learning.mvi.framework.datasource.cache.database.FactDao
 import com.learning.mvi.framework.datasource.cache.database.FactDatabase
 import com.learning.mvi.framework.datasource.cache.mapper.CacheMapper
 import com.learning.mvi.framework.datasource.cache.model.FactCacheEntity
+import com.learning.mvi.framework.datasource.model.DbDataCacheEntity
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -25,7 +27,7 @@ object CacheModule {
 
 	@Singleton
 	@Provides
-	fun provideCacheMapper() : EntityMapper<FactCacheEntity, FactModel> {
+	fun provideCacheMapper() : EntityMapper<DbDataCacheEntity, DbData> {
 		return CacheMapper()
 	}
 

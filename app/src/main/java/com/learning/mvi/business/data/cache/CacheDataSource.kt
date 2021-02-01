@@ -1,10 +1,8 @@
 package com.learning.mvi.business.data.cache
 
-import com.learning.mvi.business.domain.model.FactModel
-
 interface CacheDataSource {
 
-    suspend fun insert(fact: FactModel): Long
+	suspend fun <T> insertCacheData(homePageData : String, networkFact : T) : Long
 
-    suspend fun get(): FactModel
+	suspend fun <T> getCacheData(url : String, classOfT : Class<T>) : T?
 }

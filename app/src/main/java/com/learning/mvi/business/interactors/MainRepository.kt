@@ -16,8 +16,8 @@ constructor(private val cacheDataSource : CacheDataSource,
 		try {
 			//retrieve from network
 			val networkFact = networkDataSource.getDateFact(month, date)
-			cacheDataSource.insert(networkFact)
-			val cachedFact = cacheDataSource.get()
+			cacheDataSource.insertCacheData("unique_to_store_in_db_probably_url",networkFact)
+			val cachedFact = cacheDataSource.getCacheData("unique_to_store_in_db_probably_url",FactModel::class.java)
 			emit(DataState.Success(networkFact))
 		} catch (e : Exception) {
 			emit(DataState.Error(e))
@@ -29,8 +29,6 @@ constructor(private val cacheDataSource : CacheDataSource,
 		try {
 			//retrieve from network
 			val networkFact = networkDataSource.getMathTrivia(number)
-			cacheDataSource.insert(networkFact)
-			val cachedFact = cacheDataSource.get()
 
 			emit(DataState.Success(networkFact))
 		} catch (e : Exception) {
@@ -42,8 +40,6 @@ constructor(private val cacheDataSource : CacheDataSource,
 		emit(DataState.Loading)
 		try {
 			val networkFact = networkDataSource.getRandomTrivia()
-			cacheDataSource.insert(networkFact)
-			val cachedFact = cacheDataSource.get()
 
 			emit(DataState.Success(networkFact))
 		} catch (e : Exception) {
@@ -55,8 +51,6 @@ constructor(private val cacheDataSource : CacheDataSource,
 		emit(DataState.Loading)
 		try {
 			val networkFact = networkDataSource.getTriviaFact(number)
-			cacheDataSource.insert(networkFact)
-			val cachedFact = cacheDataSource.get()
 
 			emit(DataState.Success(networkFact))
 		} catch (e : Exception) {
@@ -68,12 +62,9 @@ constructor(private val cacheDataSource : CacheDataSource,
 		emit(DataState.Loading)
 		try {
 			val networkFact = networkDataSource.getYearTrivia(number)
-			cacheDataSource.insert(networkFact)
-			val cachedFact = cacheDataSource.get()
 			emit(DataState.Success(networkFact))
 		} catch (e : Exception) {
 			emit(DataState.Error(e))
 		}
 	}
-
 }

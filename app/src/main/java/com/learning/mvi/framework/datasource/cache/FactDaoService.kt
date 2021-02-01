@@ -1,12 +1,12 @@
 package com.learning.mvi.framework.datasource.cache
 
-import com.learning.mvi.framework.datasource.cache.model.FactCacheEntity
+import com.learning.mvi.framework.datasource.model.DbDataCacheEntity
 
 
 interface FactDaoService {
 
-    suspend fun insert(factEntity: FactCacheEntity): Long
+	suspend fun <T> insertCacheData(url : String, dataCacheEntity : T) : Long
 
-    suspend fun get(): FactCacheEntity
+	suspend fun getCacheData(url : String) : DbDataCacheEntity
 
 }
